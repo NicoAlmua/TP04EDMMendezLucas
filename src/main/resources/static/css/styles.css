@@ -1,0 +1,26 @@
+.mynav{
+	background:#1256C6  ;	
+	padding: 8px 16px 8px 16px;
+	text-align: center;
+}
+
+.login{
+	text-align: left;
+	padding: 10px 20px 20px 20px;
+}
+
+.bodyHome{
+	background:url(../img/landscape.png);
+}
+
+body {
+	background:url(../img/landscape.png) repeat center top;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;   
+}
+
+
+
+

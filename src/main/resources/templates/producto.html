@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<meta charset="UTF-8">
+<title>Producto</title>
+</head>
+
+<body>
+
+	<header>
+		<div th:insert="layouts/header :: header"></div>
+	</header>
+
+	<div class="container">
+
+		<h1>Formulario de Carga de Producto</h1>
+
+		<form id="formProducto" th:object="${unProducto}" th:action="${producto}" method="post">
+
+			<div class="form-group row">
+				<label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+				<div class="col-sm-10">
+					<input type="number" id="codigo" th:field="*{codigo}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" id="nombre" th:field="*{nombre}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="precio" class="col-sm-2 col-form-label">Precio</label>
+				<div class="col-sm-10">
+					<input type="number" id="precio" th:field="*{precio}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="marca" class="col-sm-2 col-form-label">Marca</label>
+				<div class="col-sm-10">
+					<input type="text" id="marca" th:field="*{marca}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="stock" class="col-sm-2 col-form-label">Stock</label>
+				<div class="col-sm-10">
+					<input type="number" id="stock" th:field="*{stock}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-info" value="Agregar">Agregar</button>
+				</div>
+			</div>
+		</form>
+		
+		<h3>Lista de Productos</h3><br>
+	<div class="table-responsive">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Cod Producto</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Stock</th>
+				</tr>
+			</thead>
+			
+			
+			
+			<tbody class="bg-light">	
+				<tr th:each="producto : ${productos}">
+					<td th:text="${producto.codigo}"></td>
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.marca}"></td>
+					<td th:text="${producto.stock}"></td>
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+
+	</div>
+	
+	<footer>
+		<div th:insert="layouts/footer :: footer"></div>
+	</footer>
+	
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

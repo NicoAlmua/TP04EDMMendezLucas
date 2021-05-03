@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body class="bodyHome">
+	
+	
+
+	<header>
+		<div th:insert="layouts/header :: header"></div>
+	</header>
+
+	<div class="container">
+		<form>
+ 		<div class="form-group login w-25 p-3">
+    		<label for="exampleInputEmail1">Email</label>
+    		<input type="email" class="form-control" id="exampleInputEmail1">
+  		</div>
+  		
+  		<div class="form-group login w-25 p-3">
+    		<label for="exampleInputPassword1">Password</label>
+    		<input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passHelp">
+    		<small id="passHelp" class="form-text text-muted">Don't share your password with anyone.</small>
+  		</div>
+  		
+  		<div class="form-group form-check login w-25 p-3 text-center">
+    		<input type="checkbox" class="form-check-input" id="exampleCheck1">
+    		<label class="form-check-label" for="exampleCheck1">Remeber me</label>
+  		</div>
+  		
+  		<div class="login w-25 p-3">
+  			<button type="submit" class="btn btn-primary btn-block">Log in</button>
+  		</div>
+ 
+		</form>
+	</div>
+
+	<footer>
+		<div th:insert="layouts/footer :: footer"></div>
+	</footer>
+
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
