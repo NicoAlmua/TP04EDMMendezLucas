@@ -16,12 +16,12 @@ import ar.edu.unju.edm.util.ListadoClientes;
 @Service
 @Qualifier("unImp")
 public class ClienteServiceImp implements IClienteService{
-	
+
 	private List<Cliente> listadoClientes = ListadoClientes.clientes;
 
 	@Autowired
 	Cliente unCliente;
-	
+
 	@Override
 	public void guardarCliente(Cliente unCliente) {
 		// TODO Auto-generated method stub
@@ -29,18 +29,18 @@ public class ClienteServiceImp implements IClienteService{
 		LocalDate hoy = LocalDate.now();
 		Period periodo = Period.between(nacimiento, hoy);
 		unCliente.setEdad(periodo.getYears());
-		
+
 		LocalDate ultimaCompra = unCliente.getFechaUltimaCompra();
         Period periodo1 = Period.between(ultimaCompra, hoy);
         unCliente.setTiempoTranscurrido("; T.ult.compra " + periodo1.getDays()+ "/" + periodo1.getMonths()+"/" + periodo1.getYears());
-		
+
         LocalDate cumple = nacimiento.withYear(hoy.getYear());
         if (cumple.isBefore(hoy) || cumple.isEqual(hoy)) {
             cumple = cumple.plusYears(1);
         }
         Period periodo2 = Period.between(hoy, cumple);
         unCliente.setHastaCumple("Faltan " +periodo2.getDays() + " días " + "y " +periodo2.getMonths()+" meses");
-		
+
 		listadoClientes.add(unCliente);
 	}
 
@@ -55,5 +55,57 @@ public class ClienteServiceImp implements IClienteService{
 		// TODO Auto-generated method stub
 		return listadoClientes;
 	}
-	
+
+	@Override
+	public Cliente encontrarUnCliente(int dni) {
+
+		for (int i = 0; i < listadoClientes.size(); i++){
+		    if (listadoClientes.get(i).getNroDocumento() == dni) {
+		    	unCliente = listadoClientes.get(i);
+		    }
+		}
+		LocalDate nacimiento = unCliente.getFechaNacimiento();
+		LocalDate hoy = LocalDate.now();
+		Period periodo = Period.between(nacimiento, hoy);
+		unCliente.setEdad(periodo.getYears());
+
+		LocalDate ultimaCompra = unCliente.getFechaUltimaCompra();
+        Period periodo1 = Period.between(ultimaCompra, hoy);
+        unCliente.setTiempoTranscurrido("; T.ult.compra " + periodo1.getDays()+ "/" + periodo1.getMonths()+"/" + periodo1.getYears());
+
+        LocalDate cumple = nacimiento.withYear(hoy.getYear());
+        if (cumple.isBefore(hoy) || cumple.isEqual(hoy)) {
+            cumple = cumple.plusYears(1);
+        }
+        Period periodo2 = Period.between(hoy, cumple);
+        unCliente.setHastaCumple("Faltan " +periodo2.getDays() + " días " + "y " +periodo2.getMonths()+" meses");
+        return unCliente;
+	}
+
+	@Override
+	public void modificarCliente(Cliente clienteModificado) {
+		
+		for (int i = 0; i < listadoClientes.size(); i++) {
+			if (listadoClientes.get(i).getNroDocumento() == clienteModificado.getNroDocumento()) {
+				listadoClientes.set(i, clienteModificado);
+			}
+		}
+		LocalDate nacimiento = unCliente.getFechaNacimiento();
+		LocalDate hoy = LocalDate.now();
+		Period periodo = Period.between(nacimiento, hoy);
+		unCliente.setEdad(periodo.getYears());
+
+		LocalDate ultimaCompra = unCliente.getFechaUltimaCompra();
+        Period periodo1 = Period.between(ultimaCompra, hoy);
+        unCliente.setTiempoTranscurrido("; T.ult.compra " + periodo1.getDays()+ "/" + periodo1.getMonths()+"/" + periodo1.getYears());
+
+        LocalDate cumple = nacimiento.withYear(hoy.getYear());
+        if (cumple.isBefore(hoy) || cumple.isEqual(hoy)) {
+            cumple = cumple.plusYears(1);
+        }
+        Period periodo2 = Period.between(hoy, cumple);
+        unCliente.setHastaCumple("Faltan " +periodo2.getDays() + " días " + "y " +periodo2.getMonths()+" meses");
+		    	
+	}
+
 }

@@ -11,10 +11,10 @@ public interface ProductoService {
 	//que hace con producto
 	
 	public void guardarProducto(Producto unProducto);
-	public void modificarProducto(Producto productoAModificar);
-	public void eliminarProducto(Producto productoAEliminar);
-	public Producto obtenerUnProducto(String nombreProducto);
 	public List<Producto> obtenerTodosProductos();
 	public Producto obtenerProductoNuevo();
 	public Producto obtenerUltimoProducto();
+	public Producto encontrarUnProducto(int codigo);
+	public Producto crearProducto();
+	public void modificarProducto(Producto productoModificado);
 }

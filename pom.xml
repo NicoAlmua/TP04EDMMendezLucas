@@ -57,6 +57,8 @@
 			<artifactId>font-awesome</artifactId>
 			<version>5.11.2</version>
 		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

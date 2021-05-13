@@ -21,8 +21,7 @@
 
 		<h1>Formulario de Carga de Producto</h1>
 
-		<form id="formProducto" th:object="${unProducto}" th:action="${producto}" method="post">
-
+<form id="formProducto" th:object="${unProducto}"th:action="${editMode}?@{/producto/modificar}:@{/producto/guardar}" method="post">
 			<div class="form-group row">
 				<label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
 				<div class="col-sm-10">
@@ -60,7 +59,7 @@
 
 			<div class="form-group row">
 				<div class="col-sm-10">
-					<button type="submit" class="btn btn-info" value="Agregar">Agregar</button>
+					<input type="submit" class="btn btn-info btn-block"  th:value="${editMode}?'Modificar Producto':'Crear Producto'">
 				</div>
 			</div>
 		</form>
@@ -75,10 +74,13 @@
 					<th scope="col">Precio</th>
 					<th scope="col">Marca</th>
 					<th scope="col">Stock</th>
+					<th scope="col">Edicion </th>
 				</tr>
 			</thead>
 			
-			
+			<tr th:if="${productos.empty}" class= "bg-light">
+                    <td colspan="9"> No hay productos en el listado </td>
+                    </tr>
 			
 			<tbody class="bg-light">	
 				<tr th:each="producto : ${productos}">
@@ -87,6 +89,9 @@
 					<td th:text="${producto.precio}"></td>
 					<td th:text="${producto.marca}"></td>
 					<td th:text="${producto.stock}"></td>
+					<td><a href="#" th:href="@{'/producto/editar/'+${producto.codigo}}">
+									<i class="fa fa-edit"></i></a>
+					
 				</tr>
 			</tbody>	
 		</table>

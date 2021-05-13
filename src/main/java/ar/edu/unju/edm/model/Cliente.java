@@ -6,24 +6,38 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+//@Entity
+//@Table (name="CLIENTES")
 @Component
 public class Cliente {
 
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column
+	private int nroDocumento;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaUltimaCompra;
-	
+
 	private String tiempoTranscurrido;
+	
 	private String hastaCumple;
-	private int nroDocumento;
+	
 	private int edad;
+
 	private String tipoDocumento;
+	
 	private int codigoAreaTelefono;
+	
 	private int numTelefono;
+	
 	private String email;
+	
 	private String datosAdicionales;
+	
 	private String nombre;
 
 	public Cliente() {
