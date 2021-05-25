@@ -11,7 +11,7 @@
 
 	<div id="header" th:fragment="header" class="mynav bg-primary">
 		<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-			<a class="navbar-brand" href="#">Forms</a>
+			<a class="navbar-brand" href="#">Visual</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,12 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="/cliente/mostrar">Clientes</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/producto/mostrar">Productos</a>
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Productos</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/producto/mostrar">Producto Administrador</a>
+          <a class="dropdown-item" href="/cliente/vender">Venta</a>
+        </div>
 					</li>
 				</ul>
 			</div>

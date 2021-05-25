@@ -42,4 +42,10 @@ public class OtraImp implements IClienteService{
 		
 	}
 
+	@Override
+	public void eliminarCliente(int nroDocumento) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

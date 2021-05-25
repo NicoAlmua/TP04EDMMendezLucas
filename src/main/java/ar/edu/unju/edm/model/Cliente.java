@@ -3,43 +3,50 @@ package ar.edu.unju.edm.model;
 import java.time.LocalDate;
 //import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-//@Entity
-//@Table (name="CLIENTES")
+@Entity
+@Table (name="CLIENTES")
 @Component
 public class Cliente {
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private int nroDocumento;
-	
+	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
-	
+	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaUltimaCompra;
-
+	@Column
 	private String tiempoTranscurrido;
-	
+	@Column
 	private String hastaCumple;
-	
+	@Column
 	private int edad;
-
+	@Column
 	private String tipoDocumento;
-	
+	@Column
 	private int codigoAreaTelefono;
-	
+	@Column
 	private int numTelefono;
-	
+	@Column
 	private String email;
-	
+	@Column
 	private String datosAdicionales;
-	
+	@Column
 	private String nombre;
-
+	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}

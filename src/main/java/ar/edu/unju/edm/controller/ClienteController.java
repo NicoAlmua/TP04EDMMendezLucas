@@ -77,4 +77,29 @@ public class ClienteController {
 		return("cliente");
 
 	}
+	
+	@GetMapping("/cancelar")
+	public String cancelar() {
+		return "redirect:/cliente/mostrar";
+	}
+	
+	@GetMapping("/cliente/eliminarCliente/{id}")
+	public String eliminarCliente(Model model, @PathVariable(name="id") int id) {
+		LOGGER.info("METHOD: ingresando el metodo Eliminar");
+		try {
+			clienteService.eliminarCliente(id);			
+		}
+		catch(Exception e){
+			model.addAttribute("listErrorMessage",e.getMessage());
+		}			
+		return "redirect:/cliente/mostrar";
+	}
+	
+	@GetMapping("/cliente/vender")
+	public String cargarProductoVender(Model model) {
+		model.addAttribute("unCliente", clienteService.crearCliente());
+		model.addAttribute("clientes", clienteService.obtenerTodosClientes());
+		return("venta");
+	}
+	
 }

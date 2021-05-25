@@ -77,5 +77,15 @@ public class ProductoServiceimp implements ProductoService {
 		}
 		
 	}
+
+	@Override
+	public void eliminarProducto(int codigo) {
+		
+		for (int i = 0; i < listaDeProductos.size(); i++){
+		    if (listaDeProductos.get(i).getCodigo() == codigo) {
+		    	listaDeProductos.remove(i);
+		    }
+		}
+	}
 	
 }

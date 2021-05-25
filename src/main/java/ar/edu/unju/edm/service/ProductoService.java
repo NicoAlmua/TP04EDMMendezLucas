@@ -17,4 +17,5 @@ public interface ProductoService {
 	public Producto encontrarUnProducto(int codigo);
 	public Producto crearProducto();
 	public void modificarProducto(Producto productoModificado);
+	public void eliminarProducto(int codigo);
 }

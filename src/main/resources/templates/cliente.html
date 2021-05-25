@@ -94,9 +94,11 @@
 
 
 			<div class="form-group row mx-auto">
-				<div class="col-sm-12">
-					<!--button type="submit" class="btn btn-info" value="Agregar">Agregar</button-->
+				<div class="col-sm-6">
 					<input type="submit" class="btn btn-info btn-block"  th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
+				</div>
+				<div class="col-sm-6">				
+				<a class="btn btn-danger btn-block" th:href="@{'/cancelar'}">Cancelar</a>				
 				</div>
 			</div>
 
@@ -141,6 +143,9 @@
 						<td th:text="${cli.hastaCumple} +' '+ ${cli.tiempoTranscurrido}"></td>
 						<td><a href="#" th:href="@{'/cliente/editar/'+${cli.nroDocumento}}">
 									<i class="fa fa-edit"></i></a>
+							<a th:onclick="'javascript:confirmarEliminar(\''+${cli.nroDocumento}+'\');'">
+								<i class="fas fa-user-times"></i>
+							</a></td>		
 					</tr>
 				</tbody>
 
@@ -151,9 +156,40 @@
 		<br>
 	</div>
 
+	<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="eliminarModal" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="eliminarModalTitulo">Confirmar Eliminar</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body"><h6>Se eliminará el ususario seleccionado.</h6></div>
+										<input type="hidden" id="identificador" name="userIdHiddenInput"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cancelar</button>
+											<button type="button" class="btn btn-primary" th:onclick="eliminarUsuario()">Confirmar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
 	<footer>
 		<div th:insert="layouts/footer :: footer"></div>
 	</footer>
+
+	<script type="text/javascript">
+function confirmarEliminar(id){
+	$('#modalEliminar').modal('show');
+	$("#identificador").val(id);
+}
+
+function eliminarUsuario(){
+	var id = $("#identificador").val();
+    window.location = "eliminarCliente/"+id;
+}
+</script>
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
