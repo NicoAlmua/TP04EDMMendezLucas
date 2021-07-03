@@ -17,35 +17,54 @@
 
 
 	<div class="container">
-	<br>
-	<br>
-	<br>
-		<div class="card mb-3" style="max-width: 540px;">
-			<div class="row no-gutters">
-				<div class="col-md-3">
-					<img src="/img/elmonumental.jpg" alt="">
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title text-right">Producto 1</h5>
-						<p class="card-text text-right">Descripcion del producto.</p>
-						<p class="card-text text-right">
-						<br>
-						<br>
-							<small class="text-muted text-right">Last updated 3 mins ago</small>
-						</p>
+
+		<div class="row col-md-12">
+			<div th:each="p : ${productos}">
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;">
+						<img
+							src="data:image/jpeg;base64,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"
+							class="card-img-top" alt="">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${p.nombre}">Nombre</h5>
+							<p class="card-text"
+								th:text="${'Cod. de producto - ' + p.codigo}">Id</p>
+							<p class="card-text" th:text="${'Precio - ' + p.precio}">Precio</p>
+							<a class="stretched-link btn btn-primary link-vender"
+								th:href="@{'/producto/vender/'+${p.codigo}}"><i
+								class="fas fa-shopping-cart mr-2"></i>Comprar</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
+		<div class="modal fade" id="modalVender" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+
+	</div>
 
 	<footer>
 		<div th:insert="layouts/footer :: footer"></div>
 	</footer>
 
 
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					$(".link-vender").on(
+							"click",
+							function(event) {
+								event.preventDefault();
+								$("#modalVender").modal("show").find(
+										".modal-content").load(
+										$(this).attr("href"));
+							});
+				});
+	</script>
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"

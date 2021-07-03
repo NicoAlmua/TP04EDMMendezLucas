@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.service.imp;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import ar.edu.unju.edm.service.IClienteService;
 
 @Service
 @Qualifier("mysql")
-public class OtraImp implements IClienteService{
+public class OtraImpCliente implements IClienteService{
 
 	@Autowired
 	Cliente unCliente;
@@ -25,6 +27,21 @@ public class OtraImp implements IClienteService{
 	public void guardarCliente(Cliente unCliente) {
 		// TODO Auto-generated method stub
 		//puedo implementar guardar en una BD y no en un listado
+		LocalDate nacimiento = unCliente.getFechaNacimiento();
+		LocalDate hoy = LocalDate.now();
+		Period periodo = Period.between(nacimiento, hoy);
+		unCliente.setEdad(periodo.getYears());
+
+		LocalDate ultimaCompra = unCliente.getFechaUltimaCompra();
+        Period periodo1 = Period.between(ultimaCompra, hoy);
+        unCliente.setTiempoTranscurrido("; T.ult.compra " + periodo1.getDays()+ "/" + periodo1.getMonths()+"/" + periodo1.getYears());
+
+        LocalDate cumple = nacimiento.withYear(hoy.getYear());
+        if (cumple.isBefore(hoy) || cumple.isEqual(hoy)) {
+            cumple = cumple.plusYears(1);
+        }
+        Period periodo2 = Period.between(hoy, cumple);
+        unCliente.setHastaCumple("Faltan " +periodo2.getDays() + " días " + "y " +periodo2.getMonths()+" meses");
 		clienteDAO.save(unCliente);
 	}
 

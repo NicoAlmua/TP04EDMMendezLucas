@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.edm.model.Producto;
 
 @Service
-public interface ProductoService {
+public interface IProductoService {
 	//que hace con producto
 	
 	public void guardarProducto(Producto unProducto);
 	public List<Producto> obtenerTodosProductos();
 	public Producto obtenerProductoNuevo();
 	public Producto obtenerUltimoProducto();
-	public Producto encontrarUnProducto(int codigo);
+	public Producto encontrarUnProducto(int codigo) throws Exception;
 	public Producto crearProducto();
-	public void modificarProducto(Producto productoModificado);
-	public void eliminarProducto(int codigo);
+	public void modificarProducto(Producto productoModificado) throws Exception;
+	public void eliminarProducto(int codigo) throws Exception;
 }

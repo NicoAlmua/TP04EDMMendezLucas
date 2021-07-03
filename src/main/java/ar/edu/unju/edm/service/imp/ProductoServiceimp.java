@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Producto;
-import ar.edu.unju.edm.service.ProductoService;
+import ar.edu.unju.edm.service.IProductoService;
 import ar.edu.unju.edm.util.ListadoProductos;
 
 @Service
-public class ProductoServiceimp implements ProductoService {
+public class ProductoServiceimp implements IProductoService {
 	//como se hace la solucion del problema
 	
 	private static final Log LOGGER = LogFactory.getLog(ProductoServiceimp.class);

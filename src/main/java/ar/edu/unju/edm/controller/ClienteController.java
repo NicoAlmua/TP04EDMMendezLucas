@@ -95,12 +95,4 @@ public class ClienteController {
 		}			
 		return "redirect:/cliente/mostrar";
 	}
-	
-	@GetMapping("/cliente/vender")
-	public String cargarProductoVender(Model model) {
-		model.addAttribute("unCliente", clienteService.crearCliente());
-		model.addAttribute("clientes", clienteService.obtenerTodosClientes());
-		return("venta");
-	}
-	
 }
